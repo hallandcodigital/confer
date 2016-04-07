@@ -1,3 +1,6 @@
+# This Fork
+This fork is my update to make confer work in Laravel 5.1/5.2 - Once dazzz1er's upgrade is completed this will be unpublished.
+
 # Confer
 Add a real-time chat system to your laravel 5 website/application in a few lines of code
 
