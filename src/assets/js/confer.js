@@ -110,8 +110,7 @@
 			return false;
 		}
 
-		this.pusher = new Pusher(self.options.pusher_key, { authEndpoint: self.options.base_url + '/confer/auth', authTransport: 'ajax', auth: { params: { _token : self.options.token } } });
-
+		this.pusher = new Pusher(self.options.pusher_key, {cluster: self.options.cluster, encrypted: self.options.encrypted, authEndpoint: self.options.base_url + '/confer/auth', authTransport: 'ajax', auth: { params: { _token : self.options.token } } });
 		this._initPusherEvents();
 
 		return true;

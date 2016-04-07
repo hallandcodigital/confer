@@ -2,7 +2,7 @@
 
 namespace DJB\Confer\Commands;
 
-use App\Commands\Command;
+use App\Jobs\Job;
 use Illuminate\Contracts\Bus\SelfHandling;
 use Illuminate\Foundation\Bus\DispatchesCommands;
 use DJB\Confer\Commands\MessageWasSent;
@@ -11,7 +11,7 @@ use DJB\Confer\Message;
 use DJB\Confer\Confer;
 use App\User;
 
-class ParticipantLeft extends Command implements SelfHandling {
+class ParticipantLeft extends Job implements SelfHandling {
 
 	use DispatchesCommands;
 

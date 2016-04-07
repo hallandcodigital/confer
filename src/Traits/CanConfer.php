@@ -91,12 +91,12 @@ trait CanConfer {
 	 */
 	public function participatingConversations()
 	{
-		return $this->conversations()->ignoreGlobal()->lists('id');
+		return $this->conversations()->ignoreGlobal()->lists('id')->all();
 	}
 
 	public function privateConversations()
 	{
-		return $this->conversations()->isPrivate()->lists('id');
+		return $this->conversations()->isPrivate()->lists('id')->all();
 	}
 
 	public function leaveConversation(\DJB\Confer\Conversation $conversation)

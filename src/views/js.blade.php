@@ -31,7 +31,9 @@ String.prototype.capitalize = function() {
 		loader : "{{ config('confer.loader') }}",
         requested_conversations : {{ Session::has('confer_requested_conversations') ? json_encode(Session::get('confer_requested_conversations')) : '[]' }},
         use_emoji : "{{ config('confer.enable_emoji') }}",
-		grammar_enforcer : "{{ config('confer.grammar_enforcer') }}"
+		grammar_enforcer : "{{ config('confer.grammar_enforcer') }}",
+        cluster : "{{ config('services.pusher.cluster') }}",
+        encrypted : "{{ config('services.pusher.encrypted') }}"
 	};
 	var confer = new window.Confer($('div.confer-overlay'), $('ul.confer-open-conversations-list'), {{ Auth::user()->id }}, options);
 })();

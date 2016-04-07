@@ -2,7 +2,7 @@
 
 namespace DJB\Confer\Commands;
 
-use App\Commands\Command;
+use App\Jobs\Job;
 use Illuminate\Contracts\Bus\SelfHandling;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldBeQueued;
@@ -11,7 +11,7 @@ use DJB\Confer\Confer;
 use App\User;
 use Push;
 
-class ConversationWasRequested extends Command implements SelfHandling, ShouldBeQueued {
+class ConversationWasRequested extends Job implements SelfHandling, ShouldBeQueued {
 	
 	use InteractsWithQueue;
 

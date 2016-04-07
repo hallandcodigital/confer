@@ -1,5 +1,9 @@
 # This Fork
-This fork is my update to make confer work in Laravel 5.1/5.2 - Once dazzz1er's upgrade is completed this will be unpublished.
+This fork is my update to make confer work in Laravel 5.1/5.2 - Once dazzz1er's upgrade is completed this will be unpublished. Please note the updated configuration section below.
+
+Also note, I had to modify the pusher-http-php projects file lib/Pusher.php to get confer working properly, I don't have time to investigate this fully so I added 'Pusher-example.php' with comments for lines changed, you can compare this with your projects /vendor/pusher/pusher-php-server/lib/Pusher.php to see the changes and get it working for yourself.
+
+The changes to Pusher that were required seem to stem from pusher having an updated API that requires the cluster and encrypted settings - as far as I could tell...
 
 # Confer
 Add a real-time chat system to your laravel 5 website/application in a few lines of code
@@ -99,7 +103,9 @@ Your Pusher app details are not configured in the config file provided, they are
 'pusher' => [
   'public' => 'public_key',
   'secret' => 'secret_key',
-  'app_id' => 'app_id'
+  'app_id' => 'app_id',
+  'cluster' => 'pusher_cluster',
+  'encrypted' => true
 ]
 ```
 

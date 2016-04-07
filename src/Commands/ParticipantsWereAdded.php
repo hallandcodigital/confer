@@ -2,7 +2,7 @@
 
 namespace DJB\Confer\Commands;
 
-use App\Commands\Command;
+use App\Jobs\Job;
 use App\User;
 use DJB\Confer\Commands\ConversationWasRequested;
 use DJB\Confer\Commands\MessageWasSent;
@@ -12,7 +12,7 @@ use DJB\Confer\Message;
 use Illuminate\Contracts\Bus\SelfHandling;
 use Illuminate\Foundation\Bus\DispatchesCommands;
 
-class ParticipantsWereAdded extends Command implements SelfHandling {
+class ParticipantsWereAdded extends Job implements SelfHandling {
 
 	use DispatchesCommands;
 
@@ -56,7 +56,7 @@ class ParticipantsWereAdded extends Command implements SelfHandling {
 
 	private function makeJoinMessage()
 	{
-		$users = $this->conversation_was_created ? confer_make_list($this->conversation->participants()->ignoreMe()->lists('name')) : confer_make_list(User::whereIn('id', $this->users)->lists('name'));
+		$users = $this->conversation_was_created ? confer_make_list($this->conversation->participants()->ignoreMe()->lists('name')->all()) : confer_make_list(User::whereIn('id', $this->users)->lists('name')->all());
 		$message = Message::create([
 			'conversation_id' => $this->conversation->id,
 			'body' => '<strong>' . $users . '</strong> joined the conversation on ' . $this->inviter->name . '\'s invitation',
